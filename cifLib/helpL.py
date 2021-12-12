@@ -1,3 +1,5 @@
+"""Just the help functions"""
+
 def printUsage(sName="cif2Csv"):
     """Just a synopsis"""
     print(sName+" [-h|--help]")
