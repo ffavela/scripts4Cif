@@ -3,7 +3,9 @@ import cifLib.helpL as hlp
 import sys
 import os.path
 
-preAccOpts = [ ['-h', '--help'] ]
+preAccOpts = [ ['-h', '--help'],
+               ['--sampleFmt']]
+
 accOpts=[ee for e in preAccOpts for ee in e]
 
 def getPrefDict(preAccOpts):
@@ -69,6 +71,10 @@ def getParsedSignals(myArgs, optD):
     if len(myArgs) == 1 or '-h' in optD:
         """Print help"""
         return 1
+    if '--sampleFmt' in optD:
+        """Giving sample text for a fmtFile"""
+        return 1000
+
     if len(myArgs) < 4:
         """We need the 3 filenames as arguments"""
         return 2

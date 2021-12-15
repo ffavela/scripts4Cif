@@ -6,3 +6,9 @@ def isFloat(myStr):
     except ValueError:
         return False
     return True
+
+def myEval(myStr, block):
+    try:
+        return eval(myStr)
+    except:
+        return None

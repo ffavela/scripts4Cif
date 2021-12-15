@@ -1,4 +1,5 @@
-The dependencies are... (to be written!)
+The dependencies are python3-numpy, python3-gemmi, python3-matplotlib,
+python3-pymatgen (more to be written).
 
 To install;
 
