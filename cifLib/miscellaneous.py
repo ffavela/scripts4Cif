@@ -12,3 +12,7 @@ def myEval(myStr, block):
         return eval(myStr)
     except:
         return None
+
+def cleanNum(numStr):
+    """Removes the parenthesis, simple implementation"""
+    return numStr[:numStr.find('(')]
