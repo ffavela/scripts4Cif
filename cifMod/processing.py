@@ -59,3 +59,11 @@ def processFiles(inPath, fmtFile, outCsv):
         os.chdir("../")
 
     deepProcess(inPath)
+
+
+def simpleProcess(fRoute, fmtStrList):
+    block = fmt.getBlock(fRoute)
+    misc = globals()['misc']
+    l=[misc.myEval(v, block) for v in fmtStrList]
+
+    print(l)

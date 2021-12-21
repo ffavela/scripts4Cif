@@ -15,4 +15,4 @@ def getStrFmtList(fmtPath):
         s=v.rstrip().lstrip()
         if '#' in s or s == '':
             continue
-        return v.split(',')
+        return s.split(',')

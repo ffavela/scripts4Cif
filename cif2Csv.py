@@ -5,6 +5,8 @@ import cifLib.helpL as hlp
 import cifLib.cliParsing as cliP
 import cifLib.cifFinder as fnd
 import cifLib.fmtParsing as fmt
+import cifLib.miscellaneous as misc
+
 import cifMod.printStuff as pS
 import cifMod.processing as proc
 
@@ -19,15 +21,17 @@ def main(argv):
 
     inPath, fmtFile, outCsv = argv[1:4]
     fmtStrList=fmt.getStrFmtList(fmtFile)
-    if os.path.isfile(inPath) and inPath.endswith(".cif"):
-        block = fmt.getBlock(inPath)
-        print(inPath)
-        print("block.name = ", block.name)
-    else:
-        for cRoute in fnd.yieldCifRoute(inPath):
-            print(cRoute)
-            block = fmt.getBlock(cRoute)
-            print("block.name = ", block.name)
+    print(fmtStrList)
+
+    if inPath[-1] == '/':
+        inPath = inPath[:-1]#removing trailing '/'
+
+    for cRoute in fnd.yieldCifRoute(inPath):
+        print(cRoute)
+        # proc.simpleProcess(inPath, fmtStrList)
+        block = fmt.getBlock(cRoute)
+        print(block.name, misc.cleanNum(block.find_pair("_cell_length_a")[1]))
+
 
 if __name__ == "__main__":
     main(sys.argv)

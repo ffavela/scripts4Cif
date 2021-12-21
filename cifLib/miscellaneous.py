@@ -8,6 +8,8 @@ def isFloat(myStr):
     return True
 
 def myEval(myStr, block):
+    # print("globals() are")
+    # print(globals())
     try:
         return eval(myStr)
     except:
