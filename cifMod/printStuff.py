@@ -7,10 +7,12 @@ import os
 def handleSignal(argv, pSignal):
     """From cliP getParsedSignals"""
     pName = os.path.basename(argv[0])
+    if pSignal == 100:
+        hlp.printUsage(pName, True)
+        sys.exit()
     if pSignal == 1:
         hlp.printUsage(pName)
         sys.exit()
-
     if pSignal == 2:
         sys.stderr.write("error: 3 filenames are needed as arguments\n")
         hlp.printUsage(pName)
@@ -32,10 +34,15 @@ def handleSignal(argv, pSignal):
         sys.exit()
 
     if pSignal == 6:
-        sys.stderr.write("error: outCsv has to end with .csv\n")
+        sys.stderr.write("error: outCsv has to end with .csv or a '-'\n")
         hlp.printUsage(pName)
         sys.exit()
 
     if pSignal == 1000:
-        print("REPLACING THIS WITH SAMPLE FMT TEXT")
+        print("#Sample format string, put this in a file")
+        print('block.name, cleanNum(block.find_pair("_cell_length_a")[1]), cleanNum(block.find_pair("_cell_length_b")[1]), cleanNum(block.find_pair("_cell_length_c")[1])')
+        print("#Try, for example; cif2Csv --sampleFmt > sampleFmt.txt")
+        print("#Then use it!")
+        print("#Note that python's eval is being used ==> there are serious SECURITY ISSUES!!")
+        print("#NEVER EVER USE A fmtFile WITHOUT READING IT FIRST!!")
         sys.exit()

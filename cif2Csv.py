@@ -21,17 +21,21 @@ def main(argv):
 
     inPath, fmtFile, outCsv = argv[1:4]
     fmtStrList=fmt.getStrFmtList(fmtFile)
-    print(fmtStrList)
 
     if inPath[-1] == '/':
         inPath = inPath[:-1]#removing trailing '/'
 
-    for cRoute in fnd.yieldCifRoute(inPath):
-        print(cRoute)
-        # proc.simpleProcess(inPath, fmtStrList)
-        block = fmt.getBlock(cRoute)
-        print(block.name, misc.cleanNum(block.find_pair("_cell_length_a")[1]))
+    with open(outCsv, 'w') as f:
+        if outCsv == "-":
+            f = sys.stdout
 
+        for cRoute in fnd.yieldCifRoute(inPath):
+            block = fmt.getBlock(cRoute)
+            evalList=[misc.myEval(e, block) for e in fmtStrList]
+            csvStr = ", ".join(evalList)
+            f.write(csvStr+'\n')
+            if '--tee' in myOptDict:
+                print(csvStr)
 
 if __name__ == "__main__":
     main(sys.argv)

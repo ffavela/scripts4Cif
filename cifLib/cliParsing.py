@@ -4,7 +4,8 @@ import sys
 import os.path
 
 preAccOpts = [ ['-h', '--help'],
-               ['--sampleFmt']]
+               ['--sampleFmt'],
+               ['--tee']]
 
 accOpts=[ee for e in preAccOpts for ee in e]
 
@@ -35,9 +36,9 @@ def getMyOptDict(myArgs):
         e=myArgs[i]
         if e == '':#makes some scripting easier (empty strings)
             continue
-        if e[0] == '-' and not misc.isFloat(e): #only changes if new option
-                                           #is found negative numbers
-                                           #are not options
+        if e[0] == '-' and not misc.isFloat(e) and not e == '-':
+            #only changes if new option is found negative numbers are
+            #not options also the lone '-' is not an option
             if e not in myOptDict:
                 myOptDict[e]=[]
             tmpOpt=e
@@ -68,17 +69,18 @@ def checkIfValidOpts(myOptDict, accOpts):
 
 def getParsedSignals(myArgs, optD):
     """Will return values, given the arguments, handled by another function"""
-    if len(myArgs) == 1 or '-h' in optD:
+    if len(myArgs) == 1:
         """Print help"""
         return 1
+    if '-h' in optD:
+        """Print extended help"""
+        return 100
     if '--sampleFmt' in optD:
         """Giving sample text for a fmtFile"""
         return 1000
-
     if len(myArgs) < 4:
         """We need the 3 filenames as arguments"""
         return 2
-
     inPath,fmtFile,outCsv=myArgs[1:4]
     if not os.path.exists(inPath):
         """The inPath has to exist"""
@@ -90,12 +92,11 @@ def getParsedSignals(myArgs, optD):
         """The fmtFile has to be a regular file"""
         return 5
 
-    if not outCsv.endswith(".csv"):
-        """The outCsv has to be a .csv file"""
+    if not outCsv.endswith(".csv") and outCsv != '-':
+        """The outCsv has to be a .csv file or a - for stdout"""
         return 6
 
     return 0
-
 
 def pOD(mOD):
     """Receives the option dictionary assigns the proper values for each
