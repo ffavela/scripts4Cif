@@ -46,3 +46,7 @@ def handleSignal(argv, pSignal):
         print("#Note that python's eval is being used ==> there are serious SECURITY ISSUES!!")
         print("#NEVER EVER USE A fmtFile WITHOUT READING IT FIRST!!")
         sys.exit()
+
+    if pSignal == 200:
+        sys.stderr.write("error: --log needs exactly 1 argument\n")
+        sys.exit()

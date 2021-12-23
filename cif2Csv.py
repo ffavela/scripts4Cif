@@ -32,7 +32,15 @@ def main(argv):
         for cRoute in fnd.yieldCifRoute(inPath):
             block = fmt.getBlock(cRoute)
             evalList=[misc.myEval(e, block) for e in fmtStrList]
-            csvStr = ", ".join(evalList)
+
+            try:
+                csvStr = ", ".join(evalList)
+            except:
+                sys.stderr.write("error: %s is None\n" %(cRoute))
+                if '-l' in myOptDict:
+                    with open(myOptDict['-l'][0], 'a') as lF:
+                        lF.write("error: %s is None\n" %(cRoute))
+
             f.write(csvStr+'\n')
             if '--tee' in myOptDict:
                 print(csvStr)

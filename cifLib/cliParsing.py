@@ -5,7 +5,8 @@ import os.path
 
 preAccOpts = [ ['-h', '--help'],
                ['--sampleFmt'],
-               ['--tee']]
+               ['--tee'],
+               ['-l', '--log']]
 
 accOpts=[ee for e in preAccOpts for ee in e]
 
@@ -95,6 +96,12 @@ def getParsedSignals(myArgs, optD):
     if not outCsv.endswith(".csv") and outCsv != '-':
         """The outCsv has to be a .csv file or a - for stdout"""
         return 6
+
+    if '-l' in optD:
+        """The log option"""
+        if len(optD['-l']) != 1:
+            """There should be exactly one argument"""
+            return 20
 
     return 0
 
