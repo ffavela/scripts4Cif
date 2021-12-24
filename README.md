@@ -53,6 +53,9 @@ Lines starting with \# are ignored. A sample content for a fmtFile is:
 
 block.name, block.find_pair("_journal_year")[1]
 
+The scope of available functions, outside the gemmi library, are given
+in the cLib/miscellaneous.py library.
+
 In case an operation fails for any reason, then the corresponding
 value will be 'None'. Correspondingly a message will be printed to
 stderr. If the '--log' option is used then the cif paths will None
