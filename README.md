@@ -33,7 +33,10 @@ values of the cif files. The "outCsv" is the resulting csv file if a
 ## About the inPath
 
 It should only be a route for finding cif files, it can be directly a
-single cif file.
+single cif file. If you want to obtain a bunch of cif files, you can
+download them from the crystallography open database:
+
+http://www.nanocrystallography.org/
 
 ## About the fmtFile
 

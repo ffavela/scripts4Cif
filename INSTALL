@@ -1,5 +1,6 @@
-The dependencies are python3-numpy, python3-gemmi, python3-matplotlib,
-python3-pymatgen (more to be written).
+Make sure you are using python 3.3 or later.The dependencies are
+python3-numpy, python3-gemmi, python3-matplotlib, python3-pymatgen
+(more to be written).
 
 To install;
 
