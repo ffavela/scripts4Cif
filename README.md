@@ -58,7 +58,7 @@ in the cLib/miscellaneous.py library.
 
 In case an operation fails for any reason, then the corresponding
 value will be 'None'. Correspondingly a message will be printed to
-stderr. If the '--log' option is used then the cif paths will None
+stderr. If the '--log' option is used then the cif paths with None
 values will be logged.
 
 Remember that it is good practive to test the fmFile with a single cif
