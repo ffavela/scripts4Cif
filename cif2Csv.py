@@ -18,6 +18,8 @@ def main(argv):
     pSignal = cliP.getParsedSignals(argv, myOptDict)
     pS.handleSignal(argv, pSignal)
 
+    myOptDict = cliP.getRefactoredOptDict(myOptDict)
+
     if '-c' in myOptDict:
         #The cif counting
         inPath = misc.rmTrailSlash(argv[1])
@@ -49,7 +51,7 @@ def main(argv):
             if 'None' in evalList:
                 sys.stderr.write("warning: %s has a None\n" %(cRoute))
                 if '-l' in myOptDict:
-                    with open(myOptDict['-l'][0], 'a') as lF:
+                    with open(myOptDict['-l'], 'a') as lF:
                         lF.write("warning: %s has a None\n" %(cRoute))
 
             csvStr = ", ".join(evalList)

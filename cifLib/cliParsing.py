@@ -68,6 +68,13 @@ def getMyOptDict1(myArgs):
     myProcOptDict = pOD(myPrefOptDict)
     return myProcOptDict
 
+def getRefactoredOptDict(mOD):
+    """Just refactors the option dictionary into a nicer form"""
+    if '-l' in mOD:
+        mOD['-l'] = mOD['-l'][0]
+
+    return mOD
+
 def checkIfValidOpts(myOptDict, accOpts):
     """Just checks if the options are valid."""
     for e in myOptDict:
