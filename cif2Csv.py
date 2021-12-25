@@ -29,7 +29,10 @@ def main(argv):
     fmtStrList=fmt.getStrFmtList(fmtFile)
 
     inPath = misc.rmTrailSlash(inPath)
-    with open(outCsv, 'w') as f:
+    fileOp='w'
+    if '-a' in myOptDict:
+        fileOp='a'
+    with open(outCsv, fileOp) as f:
         if outCsv == "-":
             f = sys.stdout
 

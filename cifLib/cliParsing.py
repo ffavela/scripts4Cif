@@ -7,7 +7,8 @@ preAccOpts = [ ['-h', '--help'],
                ['--sampleFmt'],
                ['--tee'],
                ['-l', '--log'],
-               ['-c', '--count']]
+               ['-c', '--count'],
+               ['-a', '--append']]
 
 accOpts=[ee for e in preAccOpts for ee in e]
 

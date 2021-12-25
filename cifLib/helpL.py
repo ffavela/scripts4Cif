@@ -29,3 +29,5 @@ def printUsage(sName="cif2Csv", extended = False):
         print("\t-c | --count\t\twill count all the cif files in the")
         print("\t\t\t\tinPath both fmtFile and outCsv can")
         print("\t\t\t\tbe '-' or omitted")
+        print("\t-a | --append\t\twill append to the outCsv")
+        print("\t\t\t\tinstead of overwritting it")
