@@ -8,7 +8,8 @@ preAccOpts = [ ['-h', '--help'],
                ['--tee'],
                ['-l', '--log'],
                ['-c', '--count'],
-               ['-a', '--append']]
+               ['-a', '--append'],
+               ['-H', '--header'] ]
 
 accOpts=[ee for e in preAccOpts for ee in e]
 
@@ -121,6 +122,18 @@ def getParsedSignals(myArgs, optD):
         if len(optD['-l']) != 1:
             """There should be exactly one argument"""
             return 20
+
+    if '-a' in optD:
+        """The append option"""
+        if len(optD['-a']) != 0:
+            """No arguments are accepted"""
+            return 40
+
+    if '-H' in optD:
+        """The append option"""
+        if len(optD['-H']) != 0:
+            """No arguments are accepted"""
+            return 50
 
     return 0
 

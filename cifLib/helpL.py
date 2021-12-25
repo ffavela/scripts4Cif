@@ -31,3 +31,5 @@ def printUsage(sName="cif2Csv", extended = False):
         print("\t\t\t\tbe '-' or omitted")
         print("\t-a | --append\t\twill append to the outCsv")
         print("\t\t\t\tinstead of overwritting it")
+        print("\t-H | --header\t\twill place a header to outCsv")
+        print("\t\t\t\tgiven by the fmtFile")

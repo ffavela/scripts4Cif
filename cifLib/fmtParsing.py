@@ -16,3 +16,14 @@ def getStrFmtList(fmtPath):
         if '#' in s or s == '':
             continue
         return s.split(',')
+
+def getStrFmt(fmtPath):
+    """A really simple parser good enough for the moment"""
+    with open(fmtPath) as f:
+        V=f.readlines()
+
+    for v in V:
+        s=v.rstrip().lstrip()
+        if '#' in s or s == '':
+            continue
+        return s

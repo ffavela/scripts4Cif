@@ -27,6 +27,9 @@ def main(argv):
     inPath, fmtFile, outCsv = argv[1:4]
     fmtStrList=fmt.getStrFmtList(fmtFile)
 
+    if '-H' in myOptDict:
+        header='#'+fmt.getStrFmt(fmtFile)
+
     inPath = misc.rmTrailSlash(inPath)
     fileOp='w'
     if '-a' in myOptDict:
@@ -34,6 +37,11 @@ def main(argv):
     with open(outCsv, fileOp) as f:
         if outCsv == "-":
             f = sys.stdout
+
+        if '-H' in myOptDict:#Just writting the header
+            f.write(header+'\n')
+            if '--tee' in myOptDict:
+                print(header)
 
         for cRoute in fnd.yieldCifRoute(inPath):
             block = fmt.getBlock(cRoute)
