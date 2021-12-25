@@ -19,12 +19,16 @@ def main(argv):
     pSignal = cliP.getParsedSignals(argv, myOptDict)
     pS.handleSignal(argv, pSignal)
 
+    if '-c' in myOptDict:
+        #The cif counting
+        inPath = misc.rmTrailSlash(argv[1])
+        print(fnd.getCifCount(inPath))
+        sys.exit()
+
     inPath, fmtFile, outCsv = argv[1:4]
     fmtStrList=fmt.getStrFmtList(fmtFile)
 
-    if inPath[-1] == '/':
-        inPath = inPath[:-1]#removing trailing '/'
-
+    inPath = misc.rmTrailSlash(inPath)
     with open(outCsv, 'w') as f:
         if outCsv == "-":
             f = sys.stdout

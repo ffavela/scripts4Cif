@@ -6,7 +6,8 @@ import os.path
 preAccOpts = [ ['-h', '--help'],
                ['--sampleFmt'],
                ['--tee'],
-               ['-l', '--log']]
+               ['-l', '--log'],
+               ['-c', '--count']]
 
 accOpts=[ee for e in preAccOpts for ee in e]
 
@@ -79,6 +80,16 @@ def getParsedSignals(myArgs, optD):
     if '--sampleFmt' in optD:
         """Giving sample text for a fmtFile"""
         return 1000
+    if '-c' in optD:
+        """Counting the cif files within inPath"""
+        if len(myArgs) < 3:
+            """There has to be at least 2 arguments (inPath and -c)"""
+            return 30
+        inPath = myArgs[1]
+        if not os.path.exists(inPath):
+            """The inPath has to exist"""
+            return 3
+        return 0 #Ok to move forward
     if len(myArgs) < 4:
         """We need the 3 filenames as arguments"""
         return 2

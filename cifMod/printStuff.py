@@ -10,9 +10,11 @@ def handleSignal(argv, pSignal):
     if pSignal == 100:
         hlp.printUsage(pName, True)
         sys.exit()
+
     if pSignal == 1:
         hlp.printUsage(pName)
         sys.exit()
+
     if pSignal == 2:
         sys.stderr.write("error: 3 filenames are needed as arguments\n")
         hlp.printUsage(pName)
@@ -49,4 +51,8 @@ def handleSignal(argv, pSignal):
 
     if pSignal == 200:
         sys.stderr.write("error: --log needs exactly 1 argument\n")
+        sys.exit()
+
+    if pSignal == 30:
+        sys.stderr.write("error: -c needs an inPath\n")
         sys.exit()

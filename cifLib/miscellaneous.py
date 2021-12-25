@@ -16,3 +16,8 @@ def myEval(myStr, block):
 def cleanNum(numStr):
     """Removes the parenthesis, simple implementation"""
     return numStr[:numStr.find('(')]
+
+def rmTrailSlash(strPath):
+    if strPath[-1] == '/':
+        inPath = strPath[:-1]#removing trailing '/'
+    return strPath
