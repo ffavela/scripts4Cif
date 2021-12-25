@@ -12,6 +12,12 @@ preAccOpts = [ ['-h', '--help'],
 
 accOpts=[ee for e in preAccOpts for ee in e]
 
+def catchForeignOpts(myOptDict):
+    for opt in myOptDict:
+        if opt not in accOpts:
+            sys.stderr.write("error: %s is not an implemented option\n" %(opt))
+            sys.exit()
+
 def getPrefDict(preAccOpts):
     """Returns a dictionary with the preferred option forms, those are the
 first elements of preAccOpts
@@ -56,6 +62,7 @@ def getMyOptDict(myArgs):
 
 def getMyOptDict1(myArgs):
     myOptDict0 = getMyOptDict(myArgs)
+    catchForeignOpts(myOptDict0)
     myPrefOptDict = getPrefOptDict(myOptDict0, preAccOpts)
     myProcOptDict = pOD(myPrefOptDict)
     return myProcOptDict

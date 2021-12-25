@@ -15,7 +15,6 @@ import os
 
 def main(argv):
     myOptDict = cliP.getMyOptDict1(argv)
-
     pSignal = cliP.getParsedSignals(argv, myOptDict)
     pS.handleSignal(argv, pSignal)
 
