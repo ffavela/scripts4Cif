@@ -59,6 +59,8 @@ def main(argv):
                 if '-l' in myOptDict:
                     with open(myOptDict['-l'], 'a') as lF:
                         lF.write("warning: %s has a None\n" %(cRoute))
+                if '-N' in myOptDict:
+                    continue
 
             csvStr = ", ".join(evalList)
 

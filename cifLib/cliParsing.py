@@ -7,6 +7,7 @@ preAccOpts = [ ['-h', '--help'],
                ['--sampleFmt'],
                ['--tee'],
                ['-l', '--log'],
+               ['-N', '--noNone'],
                ['-c', '--count'],
                ['-p', '--print'],
                ['-n'],
@@ -160,10 +161,16 @@ def getParsedSignals(myArgs, optD):
             return 40
 
     if '-H' in optD:
-        """The append option"""
+        """The header option"""
         if len(optD['-H']) != 0:
             """No arguments are accepted"""
             return 50
+
+    if '-N' in optD:
+        """Avoid None lines"""
+        if len(optD['-N']) != 0:
+            """No arguments are accepted"""
+            return 300
 
     return 0
 

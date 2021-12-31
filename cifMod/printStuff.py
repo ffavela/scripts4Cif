@@ -76,3 +76,7 @@ def handleSignal(argv, pSignal):
     if pSignal == 211:
         sys.stderr.write("error: -n needs the no arguments\n")
         sys.exit()
+
+    if pSignal == 300:
+        sys.stderr.write("error: -N needs no arguments\n")
+        sys.exit()

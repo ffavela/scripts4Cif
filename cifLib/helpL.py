@@ -26,6 +26,8 @@ def printUsage(sName="cif2Csv", extended = False):
         print("\t\t\t\tthat's weird!!")
         print("\t-l | --log logFile\tlogging errors into the logFile")
         print("\t\t\t\tlog messages will be appended here")
+        print("\t-N | --noNone\t\twill avoid writing lines with")
+        print("\t\t\t\tNone values to outCsv")
         print("\t-c | --count\t\twill count all the cif files in the")
         print("\t\t\t\tinPath. Both fmtFile and outCsv can")
         print("\t\t\t\tbe '-' or omitted")
