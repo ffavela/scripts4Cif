@@ -64,3 +64,15 @@ def handleSignal(argv, pSignal):
     if pSignal == 50:
         sys.stderr.write("error: -H needs no arguments\n")
         sys.exit()
+
+    if pSignal == 60:
+        sys.stderr.write("error: -p needs an inPath\n")
+        sys.exit()
+
+    if pSignal == 210:
+        sys.stderr.write("error: -n needs the -p option\n")
+        sys.exit()
+
+    if pSignal == 211:
+        sys.stderr.write("error: -n needs the no arguments\n")
+        sys.exit()

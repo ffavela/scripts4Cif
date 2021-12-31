@@ -3,7 +3,7 @@
 def printUsage(sName="cif2Csv", extended = False):
     """Just a synopsis"""
     print(sName+" [[-h|--help] | --sampleFmt]")
-    print(sName+" <inPath> [-c | --count]")
+    print(sName+" <inPath> (-c|--count)|(-p|--print [-n])")
     print(sName+" <inPath> <fmtFile> <outCsv> [options]")
 
     if extended:
@@ -27,8 +27,13 @@ def printUsage(sName="cif2Csv", extended = False):
         print("\t-l | --log logFile\tlogging errors into the logFile")
         print("\t\t\t\tlog messages will be appended here")
         print("\t-c | --count\t\twill count all the cif files in the")
-        print("\t\t\t\tinPath both fmtFile and outCsv can")
+        print("\t\t\t\tinPath. Both fmtFile and outCsv can")
         print("\t\t\t\tbe '-' or omitted")
+        print("\t-p | --print\t\tprints all the cif files paths")
+        print("\t\t\t\tin the inPath. Both fmtFile and outCsv can")
+        print("\t\t\t\tbe '-' or omitted")
+        print("\t-n\t\t\twill enumerate the printed paths (starting")
+        print("\t\t\t\tfrom 0) compatible only with -p")
         print("\t-a | --append\t\twill append to the outCsv")
         print("\t\t\t\tinstead of overwritting it")
         print("\t-H | --header\t\twill place a header to outCsv")

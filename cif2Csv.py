@@ -26,6 +26,12 @@ def main(argv):
         print(fnd.getCifCount(inPath))
         sys.exit()
 
+    if '-p' in myOptDict:
+        #The cif printing
+        inPath = misc.rmTrailSlash(argv[1])
+        fnd.printPath(inPath, '-n' in myOptDict)
+        sys.exit()
+
     inPath, fmtFile, outCsv = argv[1:4]
     fmtStrList=fmt.getStrFmtList(fmtFile)
 

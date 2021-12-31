@@ -20,3 +20,11 @@ def getCifCount(path="./", total=0):
             total += getCifCount(path+'/'+e)
 
     return total
+
+def printPath(path, enumBool=False):
+    if not enumBool:
+        for cRoute in yieldCifRoute(path):
+            print(cRoute)
+    else:
+        for i, cRoute in enumerate(yieldCifRoute(path)):
+            print("%d, %s" %(i, cRoute))

@@ -8,6 +8,8 @@ preAccOpts = [ ['-h', '--help'],
                ['--tee'],
                ['-l', '--log'],
                ['-c', '--count'],
+               ['-p', '--print'],
+               ['-n'],
                ['-a', '--append'],
                ['-H', '--header'] ]
 
@@ -106,6 +108,27 @@ def getParsedSignals(myArgs, optD):
             """The inPath has to exist"""
             return 3
         return 0 #Ok to move forward
+
+    if '-n' in optD:
+        """The enumerate option"""
+        if '-p' not in optD:
+            """It has to be used with the -p option"""
+            return 210
+        if len(optD['-n']) != 0:
+            """No arguments should be used"""
+            return 211
+
+    if '-p' in optD:
+        """Counting the cif files within inPath"""
+        if len(myArgs) < 3:
+            """There has to be at least 2 arguments (inPath and -p)"""
+            return 60
+        inPath = myArgs[1]
+        if not os.path.exists(inPath):
+            """The inPath has to exist"""
+            return 3
+        return 0 #Ok to move forward
+
     if len(myArgs) < 4:
         """We need the 3 filenames as arguments"""
         return 2
