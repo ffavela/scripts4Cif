@@ -21,3 +21,7 @@ def rmTrailSlash(strPath):
     if strPath[-1] == '/':
         inPath = strPath[:-1]#removing trailing '/'
     return strPath
+
+def rmSN(strVal):
+    """Removes the semicolons on a string & \n"""
+    return strVal.replace(';', '').replace('\n', '')

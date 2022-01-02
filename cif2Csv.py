@@ -42,10 +42,8 @@ def main(argv):
     fileOp='w'
     if '-a' in myOptDict:
         fileOp='a'
-    with open(outCsv, fileOp) as f:
-        if outCsv == "-":
-            f = sys.stdout
-
+    with open(outCsv, fileOp) if outCsv != '-'\
+         else sys.stdout as f:
         if '-H' in myOptDict:#Just writting the header
             f.write(header+'\n')
             if '--tee' in myOptDict:
