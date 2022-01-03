@@ -3,6 +3,8 @@ from gemmi import cif
 def getBlock(cifFName):
     """Gets a single block from a given cif file"""
     doc = cif.read_file(cifFName)
+    if len(doc) == 0:
+        return None
     block = doc.sole_block()
     return block
 
