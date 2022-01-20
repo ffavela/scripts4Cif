@@ -7,6 +7,10 @@ You may clone the repository with:
 
 git clone git@github.com:ffavela/scripts4Cif.git
 
+If that fails just do it with HTTPS via:
+
+git clone https://github.com/ffavela/scripts4Cif.git
+
 # General usage
 
 From here on I'm going to assume that you have the program installed,
