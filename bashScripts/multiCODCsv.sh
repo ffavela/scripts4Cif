@@ -4,11 +4,23 @@ inCODDir="$1"
 
 fmtFile="$2"
 
-echo "inCODDir=$inCODDir fmtFile=$fmtFile"
+outCsv="$3"
+
+threadN="$4"
+
+defaultThreadN=4
+
+echo "inCODDir=$inCODDir fmtFile=$fmtFile outCsv=$outCsv threadN=$threadN"
 
 [ ! $inCODDir ] && echo "error: inCODDir cannot be empty" && exit 4
 
 [ ! $fmtFile ] && echo "error: fmtFile cannot be empty" && exit 5
+
+[ ! $outCsv ] && echo "error: outCsv cannot be empty" && exit 6
+
+[[ ! "$outCsv" == *.csv ]] && echo "error: outCsv has to end with .csv" &&\
+    exit 7
+
 
 [ ! -d $inCODDir ] &&\
     echo "error: $inCODDir is not a directory" && exit 1
@@ -24,67 +36,19 @@ done
 [ ! -f $fmtFile ] &&\
     echo "error: $fmtFile does not exist" && exit 3
 
-# N=4
-# (
-#     for e in $(seq 1 9)
-#     do
-# 	count=$(cif2Csv $inCODDir/$e -c) &
-# 	echo $inCODDir/$e $count
-# 	((i=i%N)); ((i++==0)) && wait
-#     done
-# )
-
-#special directory listing
-# N=4
-# (
-#     for e in $(seq 1 9)
-#     do
-# 	if [ $e -eq 4 ] || [ $e -eq 7 ] 
-# 	then
-# 	    for ee in $inCODDir/$e/*
-# 	    do
-# 		outCsv="$e""_""$(basename $ee)"".csv"
-# 		echo outCsv $outCsv
-# 		count=$(cif2Csv $ee -c) &&\
-# 		    echo $ee $count &
-# 		((i=i%N)); ((i++==0)) && wait
-# 	    done
-# 	else
-# 	    outCsv="$e"".csv"
-# 	    echo outCsv $outCsv
-# 	    count=$(cif2Csv $inCODDir/$e -c) &&\
-# 		echo $inCODDir/$e $count &
-# 	    ((i=i%N)); ((i++==0)) && wait
-# 	fi
-
-#     done
-#     wait
-# )
-
-#Counting differently
-# N=4
-# (
-#     for e in $(seq 1 9)
-#     do
-# 	for ee in $inCODDir/$e/*
-# 	do
-# 	    outCsv="$e""_""$(basename $ee)"".csv"
-# 	    echo outCsv $outCsv
-# 	    count=$(cif2Csv $ee -c) &&\
-# 		echo $(basename $outCsv .csv) $count > $outCsv &&
-# 		echo $ee $count &
-# 	    ((i=i%N)); ((i++==0)) && wait
-# 	done
-#     done
-#     wait
-# )
-
-# cat *_*.csv > total.csv
-
-# rm *_*.csv
+case $threadN in
+    ('')
+	echo "using default threadN value of $defaultThreadN"; threadN=$defaultThreadN ;;
+    (*[!0-9]*)
+	echo "error: threadN is not a number" && exit 8;;
+    (0*)
+	echo "error: threadN cannot be zero" && exit 9;;
+    (*)
+	echo "ok2go";;
+esac
 
 #Testing this
-N=8
+N=$threadN
 (
     for e in $(seq 1 9)
     do
@@ -100,7 +64,7 @@ N=8
     wait
 )
 
-cat *_*.csv > total.csv
+cat *_*.csv > $outCsv
 rm *_*.csv
 
 exit 0
