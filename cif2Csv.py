@@ -33,7 +33,7 @@ def main(argv):
         sys.exit()
 
     inPath, fmtFile, outCsv = argv[1:4]
-    fmtStrList=fmt.getStrFmtList(fmtFile)
+    fmtStrList=fmt.getStrFmtList1(fmtFile)
 
     if '-H' in myOptDict:
         header='#'+fmt.getStrFmt(fmtFile)
