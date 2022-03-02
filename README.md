@@ -75,5 +75,3 @@ file and not with a path that may contain tenths of thousands.
 A csv (comma separated value) file, created from the cif files in the
 inPath and the fmtFile. If an '-' is used then the output csv are
 printed to stdout.
-
-Look at the develop (comming soon) branch for the latest commits.
