@@ -1,6 +1,5 @@
 """
 Fermin Martinez
-
 This package contains the `super_split(string)` function.
 Function that separates a word by commas.
 
