@@ -1,21 +1,21 @@
 """
 Fermin Martinez
 
-Esta paquetería contiene la función `super_split(string)`.
+This package contains the `super_split(string)` function.
+Function that separates a word by commas.
 
-Función que separa una palabra por comas.
-Si hay palabras con paréntesis y dentro de estos hay comas, la función
-las ignora, y no las separa.
+If there are words with parentheses and inside these there are commas,
+the function ignores them, and does not separate them.
 
-Ejemplo:
+Example:
 [In] : super_split('block.name, f(a,b,c), g(x,y,d), h(a), (a,b)')
 [Out] : ['block.name', 'f(a,b,c)', 'g(x,y,d)', 'h(a)', '(a,b)']
 """
 
+
 def search_comas(string):
     """
-    Obtiene las comas dentro de una oracion y regresa las posiciones de estos en una
-    lista.
+    Gets the commas within a sentence and returns their positions in a list.
     """
     lst = []
     for pos, char in enumerate(string):
@@ -25,8 +25,7 @@ def search_comas(string):
 
 def search_parentesis(string):
     """
-    Obtiene los parentesis dentro de una oracion y regresa las posiciones de estos en una
-    lista.
+    Gets the parentheses within a sentence and returns their positions in a list.
     """
     lst = []
     for pos, char in enumerate(string):
@@ -38,7 +37,7 @@ def search_parentesis(string):
 
 def comas_para_separar(string):
     """
-    Regresa la posicion de las comas que no esten dentro de un paréntesis de un string ingresado.
+    Returns the position of commas that are not inside a parenthesis of an input string.
     """
     comas_position = search_comas(string)
     parentesis_position = search_parentesis(string)
@@ -48,72 +47,72 @@ def comas_para_separar(string):
     comas_seleccionadas = [e for e in comas_position]
 
     while k <= n-2:
-        # Selecciona los paréntesis.
+        # Selects parenthesis.
         par1 = parentesis_position[k]
         par2 = parentesis_position[k+1]
         for j in range(len(comas_position)):
             coma = comas_position[j]
             if coma >= par1 and coma <= par2:
-                comas_seleccionadas.remove(coma) # Elimina la coma de la lista de las comas
+                comas_seleccionadas.remove(coma)  # Removes the comma from the comma list.
         k += 2
 
     return comas_seleccionadas
 
 def super_split(string):
     """
-    Función que separa una palabra por comas.
-    Si hay palabras con paréntesis y dentro de estos hay comas, la función
-    las ignora, y no las separa.
+    Function that separates a word by commas.
+    If there are words with parentheses and inside them there are commas, the
+    function ignores them, and does not separate them.
 
-    Ejemplo:
+    Example:
     [In] : super_split('block.name, f(a,b,c), g(x,y,d), h(a), (a,b)')
     [Out] : ['block.name', 'f(a,b,c)', 'g(x,y,d)', 'h(a)', '(a,b)']
 
     Parameters
     ----------
     `string` : `str`
-        Palabra ingresada para analizar.
+        Input word for the analysis.
 
     Returns
     -------
     list
-        Regresa una lista que contiene strings.
+        Returns a list containing strings.
     """
-    # Obtiene la posicion especifica de las comas que separan solo funciones
+    # Gets the specific position of commas separating only functions.
     posicion_comas = comas_para_separar(string)
 
-    # Aqui se guardan las funciones encontradas
+    # Here the found functions are stored
     set_splits = []
 
-    # Cantidad de comas en la palabra
+    # Number of commas in the word
     n = len(posicion_comas)
-    # Conteo para analisis de split en cero.
+    # Counting for split analysis at zero.
     k = 0
 
     while k <= n and n > 0:
         if k == 0:
-            # Inicio del string
+            # String start
             coma = posicion_comas[k]
             word = string[:coma].strip()
-        elif k>0 and k<n:
-            # Partes intermedias del string
+        elif k > 0 and k < n:
+            # Intermediate parts of the string
             coma_ant = posicion_comas[k-1]
             coma_post = posicion_comas[k]
             word = string[coma_ant+1:coma_post].strip()
-        elif k==n and n>0:
-            # Parte final del string
+        elif k == n and n > 0:
+            # Final part of the string
             coma = posicion_comas[k-1]
             word = string[coma+1:].strip()
 
-        # Se guarda la variable.
+        # The variable is saved.
         if word != '':
-            # No queremos guardar espacios vacios si hay comas juntas en el string como: "a,,,"
+            # We do not want to keep empty spaces if there are commas together in the string as: "a,,,"
             set_splits.append(word)
 
         k += 1
 
-    if n==0:
-        # Es decir, no hay comas, entonces, solo devuelve la palabra.
+    if n == 0:
+        # That is, there are no commas, so it just returns the word.
         set_splits.append(string)
 
     return set_splits
