@@ -1,4 +1,4 @@
-Hola, esto es una entrada
+Experimentando con pull y push
 
 # Cloning (you probably already did this)
 
