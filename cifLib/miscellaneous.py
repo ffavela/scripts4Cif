@@ -1,4 +1,6 @@
 """Just a set of miscellaneous functions"""
+import cifLib.lattice_volume as latt
+from cifLib.get_bravais_lattice_type import *
 
 def isFloat(myStr):
     try:
@@ -25,3 +27,6 @@ def rmTrailSlash(strPath):
 def rmSN(strVal):
     """Removes the semicolons on a string & \n"""
     return strVal.replace(';', '').replace('\n', '')
+    
+def simpleOperation(intVal):
+    return intVal + 1000
