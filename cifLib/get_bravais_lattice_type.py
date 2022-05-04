@@ -1,8 +1,10 @@
 #from cifLib.miscellaneous import cleanNum
-
-def cleanNum(numStr):
-    """Removes the parenthesis, simple implementation"""
-    return numStr[:numStr.find('(')]
+    
+def cleanNum(numStr): 
+     """Removes the parenthesis, simple implementation""" 
+     if numStr.find('(') != -1:       
+         return numStr[:numStr.find('(')] 
+     return numStr 
 
 
 def get_bravais_lattice_type(block):
