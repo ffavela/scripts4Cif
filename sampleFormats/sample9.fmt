@@ -1,0 +1,1 @@
+block.name, float(cleanNum(block.find_pair("_cell_measurement_temperature")[1])), float(cleanNum(block.find_pair("_diffrn_ambient_temperature")[1]))
