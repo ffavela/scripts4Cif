@@ -21,7 +21,19 @@ def cleanNum(numStr):
      """Removes the parenthesis, simple implementation""" 
      if numStr.find('(') != -1:       
          return numStr[:numStr.find('(')] 
-     return numStr 
+     return numStr
+
+def cleanJournal(Str): 
+     """Removes the ; and ' (simple implementation)""" 
+     Str = Str.replace(";","")
+     Str = Str.replace("'","")
+     Str = Str.replace("\n","")
+     if Str[0] == " ":
+     	Str = Str[1:]
+     if Str[-1] == " ":
+     	Str = Str[:-2]
+     Str = Str.upper()
+     return Str
 
 def rmTrailSlash(strPath):
     if strPath[-1] == '/':
