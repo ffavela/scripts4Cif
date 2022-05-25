@@ -28,10 +28,8 @@ def cleanJournal(Str):
      Str = Str.replace(";","")
      Str = Str.replace("'","")
      Str = Str.replace("\n","")
-     if Str[0] == " ":
-     	Str = Str[1:]
-     if Str[-1] == " ":
-     	Str = Str[:-2]
+     Str = Str.lstrip()
+     Str = Str.rstrip()
      Str = Str.upper()
      return Str
 
