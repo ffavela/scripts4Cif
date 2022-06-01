@@ -3,6 +3,7 @@ import numpy as np
 import cifLib.lattice_volume as latt
 from math import radians
 from cifLib.get_bravais_lattice_type import *
+import gemmi 
 
 def isFloat(myStr):
     try:
@@ -107,3 +108,11 @@ def get_lattice_volume(block):
         volumen = a*b*c*(np.sqrt(1-s1-s2-s3+s4))
 
     return volumen
+
+def get_atom_count(formulaBlock):
+    elements = gemmi.make_small_structure_from_block(formulaBlock)
+    return len(elements.sites)
+
+def get_element_count(formulaString):
+    elements = gemmi.make_small_structure_from_block(formulaBlock)
+    return [elements.sites[i].label for i in range(len(elements.sites))]
