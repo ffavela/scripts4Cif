@@ -1,0 +1,1 @@
+block.name, get_atom_count(block), get_lattice_volume(block)
