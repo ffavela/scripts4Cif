@@ -27,5 +27,8 @@ def getMultiplicity(cifRoute, block):
 
 def getAtomNumber(cifRoute, block):
     listOcc_arr = asarray(getOccupancies(cifRoute))
-    listMult_arr = asarray(getMultiplicity(cifRoute, block), float)
-    return dot(listOcc_arr, listMult_arr)
+    try:
+    	listMult_arr = asarray(getMultiplicity(cifRoute, block), float)
+    	return dot(listOcc_arr, listMult_arr)
+    except:
+    	return -1
