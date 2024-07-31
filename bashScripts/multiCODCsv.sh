@@ -47,6 +47,8 @@ case $threadN in
 	echo "ok2go";;
 esac
 
+tmpDir=$(mktemp -dt multiCODCsvTmp.XXXXXX)
+
 #Testing this
 N=$threadN
 (
@@ -54,7 +56,7 @@ N=$threadN
     do
 	for ee in $inCODDir/$e/*
 	do
-	    outCsv="$e""_""$(basename $ee)"".csv"
+	    outCsv=$tmpDir/"$e""_""$(basename $ee)"".csv"
 	    echo outCsv $outCsv
 	    cif2Csv $ee $fmtFile $outCsv &&\
 		echo "Finished $outCsv" &
@@ -64,7 +66,7 @@ N=$threadN
     wait
 )
 
-cat *_*.csv > $outCsv
-rm *_*.csv
+cat $tmpDir/*_*.csv > $outCsv
+rm -rf $tmpDir
 
 exit 0
