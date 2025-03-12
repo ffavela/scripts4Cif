@@ -127,3 +127,43 @@ def get_bravais_cell_volume(block):
     # Calculate the cell volume using the formula_volume function
     volume = formula_cell_volume(a, b, c, alpha, beta, gamma)
     return volume
+
+def get_bravais(block):
+    # Get the cell lengths and angles
+    a = block.find_pair('_cell_length_a')[1]
+    b = block.find_pair('_cell_length_b')[1]
+    c = block.find_pair('_cell_length_c')[1]
+    alpha = block.find_pair('_cell_angle_alpha')[1]
+    beta = block.find_pair('_cell_angle_beta')[1]
+    gamma = block.find_pair('_cell_angle_gamma')[1]
+    # Remove uncertainty info from values.
+    a = extract_number(a)
+    b = extract_number(b)
+    c = extract_number(c)
+    alpha = extract_number(alpha)
+    beta = extract_number(beta)
+    gamma = extract_number(gamma)
+    result = None
+    # Content
+    if math.isclose(a, b) and math.isclose(b, c) and math.isclose(alpha, beta)\
+       and math.isclose(beta, gamma) and math.isclose(gamma, 90):
+        result = "cubic"
+    elif math.isclose(a, b) and b != c and math.isclose(alpha, beta)\
+         and math.isclose(beta, gamma) and math.isclose(gamma, 90):
+        result = "tetragonal"
+    elif a != b and b != c and a != c and math.isclose(alpha, beta)\
+         and math.isclose(beta, gamma) and math.isclose(gamma, 90):
+        result = "orthorhombic"
+    elif math.isclose(a, b) and b != c and math.isclose(alpha, beta)\
+         and math.isclose(beta, 90) and math.isclose(gamma, 120):
+        result = "hexagonal"
+    elif math.isclose(a, b) and math.isclose(b, c) and math.isclose(alpha, beta)\
+         and math.isclose(beta, gamma) and gamma != 90:
+        result = "trigonal"
+    elif a != b and b != c and a != c and math.isclose(alpha, gamma)\
+         and beta != 120 and math.isclose(gamma, 90):
+        result = "monoclinic"
+    elif a != b and b != c and a != c and alpha != beta and beta != gamma \
+         and gamma != 90:
+        result = "triclinic"
+    return result
