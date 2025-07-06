@@ -167,3 +167,13 @@ def get_bravais(block):
          and gamma != 90:
         result = "triclinic"
     return result
+
+def get_form_sum(block):
+    form_sum = block.find_pair('_chemical_formula_sum')[1]
+    return form_sum
+
+def get_presence(block):
+    form_sum = get_form_sum(block)
+    clean = re.sub(r'\.?\d+(\.\d+)?', '', form_sum)
+    clean = re.sub(r'\bD\b', 'H', clean) #Deuterium case
+    return clean
