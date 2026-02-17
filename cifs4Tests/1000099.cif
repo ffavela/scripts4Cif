@@ -1,0 +1,101 @@
+#------------------------------------------------------------------------------
+#$Date: 2016-02-14 16:26:36 +0200 (Sun, 14 Feb 2016) $
+#$Revision: 176435 $
+#$URL: file:///home/coder/svn-repositories/_RELOADED_COD/cod-reloaded/cif/1/00/00/1000099.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/
+#
+# All data on this site have been placed in the public domain by the
+# contributors.
+#
+data_1000099
+loop_
+_publ_author_name
+'Marcos, M D'
+'Ibanez, R'
+'Amoros, P'
+'Le Bail, A'
+_publ_section_title
+;
+Layer structure of (CoCl(H~2~PO~2~)) . H~2~O
+;
+_journal_coden_ASTM              ACSCEE
+_journal_name_full               'Acta Crystallographica C (39,1983-)'
+_journal_page_first              1152
+_journal_page_last               1155
+_journal_volume                  47
+_journal_year                    1991
+_chemical_formula_structural     'Co (H2 P O2) Cl (H2 O)'
+_chemical_formula_sum            'Cl Co H4 O3 P'
+_chemical_name_systematic        'Cobalt phosphinate chloride hydrate'
+_space_group_IT_number           61
+_symmetry_cell_setting           orthorhombic
+_symmetry_Int_Tables_number      61
+_symmetry_space_group_name_Hall  '-P 2ac 2ab'
+_symmetry_space_group_name_H-M   'P b c a'
+_cell_angle_alpha                90
+_cell_angle_beta                 90
+_cell_angle_gamma                90
+_cell_formula_units_Z            8
+_cell_length_a                   7.416(4)
+_cell_length_b                   13.082(7)
+_cell_length_c                   9.483(5)
+_cell_volume                     920.0
+_refine_ls_R_factor_all          0.025
+_cod_original_formula_sum        'H4 Cl Co O3 P'
+_cod_database_code               1000099
+loop_
+_symmetry_equiv_pos_as_xyz
+x,y,z
+1/2+x,1/2-y,-z
+-x,1/2+y,1/2-z
+1/2-x,-y,1/2+z
+-x,-y,-z
+1/2-x,1/2+y,z
+x,1/2-y,1/2+z
+1/2+x,y,1/2-z
+loop_
+_atom_site_aniso_label
+_atom_site_aniso_U_11
+_atom_site_aniso_U_12
+_atom_site_aniso_U_13
+_atom_site_aniso_U_22
+_atom_site_aniso_U_23
+_atom_site_aniso_U_33
+Co1 0.0127(1) -0.0011(1) -0.0010(1) 0.0198(1) 0.0003(1) 0.0130(1)
+P1 0.0138(1) -0.0004(1) 0.0005(1) 0.0158(2) .0000(1) 0.0151(1)
+Cl1 0.0169(1) 0.0009(1) 0.0028(1) 0.0205(2) 0.0002(1) 0.0186(1)
+O1 0.0133(4) 0.0018(3) 0.0003(3) 0.0214(5) -0.0016(3) 0.0152(4)
+O2 0.0181(5) -0.0023(4) -0.0020(4) 0.0302(6) 0.0028(4) 0.0192(4)
+O3 0.0151(4) -0.0051(4) 0.0024(3) 0.0260(6) -0.0005(4) 0.0184(4)
+loop_
+_atom_site_label
+_atom_site_type_symbol
+_atom_site_symmetry_multiplicity
+_atom_site_Wyckoff_symbol
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_occupancy
+_atom_site_attached_hydrogens
+_atom_site_calc_flag
+Co1 Co2+ 8 c 0.11761(3) 0.50057(2) 0.14499(2) 1. 0 d
+P1 P1+ 8 c 0.22495(5) 0.15392(3) 0.38784(4) 1. 0 d
+Cl1 Cl1- 8 c 0.87924(5) 0.39750(3) 0.26525(4) 1. 0 d
+O1 O2- 8 c 0.0858(2) 0.0871(1) 0.4626(1) 1. 0 d
+O2 O2- 8 c 0.6960(2) 0.0943(1) 0.4568(1) 1. 0 d
+O3 O2- 8 c 0.3775(2) 0.0965(1) 0.3168(1) 1. 0 d
+H1 H1+ 8 c 0.285(4) 0.211(2) 0.478(3) 1. 0 d
+H2 H1+ 8 c 0.137(4) 0.212(2) 0.306(3) 1. 0 d
+H3 H1+ 8 c 0.577(5) 0.089(2) 0.432(4) 1. 0 d
+H4 H1+ 8 c 0.699(5) 0.098(2) 0.551(4) 1. 0 d
+loop_
+_atom_type_symbol
+_atom_type_oxidation_number
+Co2+ 2.000
+P1+ 1.000
+Cl1- -1.000
+O2- -2.000
+H1+ 1.000

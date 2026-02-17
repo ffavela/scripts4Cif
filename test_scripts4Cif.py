@@ -1,4 +1,8 @@
-def test_dummy():
-    """Just an initial dummy test"""
+import cifLib.cifFinder as fnd
 
-    assert 2 == 2
+
+def test_countTest():
+    """Testing the cif counting"""
+
+    expCount = 100
+    assert expCount == fnd.getCifCount('cifs4Tests')
