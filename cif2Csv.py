@@ -10,7 +10,7 @@ import cifLib.miscellaneous as misc
 import cifMod.printStuff as pS
 import cifMod.processing as proc
 
-from gemmi import cif
+from gemmi import cif  # type: ignore
 import os
 
 def main(argv):
