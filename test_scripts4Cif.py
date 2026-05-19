@@ -140,3 +140,154 @@ def test_sample4():
     for aL, gS in zip(anotherL, genSorted):
         assert aL == gS
 
+def test_sample5():
+    fname = 'dir4Tests/sampleTests/sample5.csv'
+    fmtFile = 'sampleFormats/sample5.fmt'
+    inPath = 'dir4Tests/cifs4Tests'
+    fmtStrList=fmt.getStrFmtList(fmtFile)
+    with open(fname, 'r') as file:
+        lines = file.readlines()
+
+    # Doing all this hassle to avoid race contitions
+    anotherL = sorted([line.split(',') for line in lines],
+                      key = lambda x: x[0])
+    # Yeah very unoptimized but the list is not that long
+    for i, line in enumerate(anotherL):
+         anotherL[i] = [a.strip() for a in line]
+    genCsvL = []
+    for cRoute in fnd.yieldCifRoute(inPath):
+        block = fmt.getBlock(cRoute)
+        evalList=[str(misc.myEval(e, block)) for e in fmtStrList]
+        genCsvL.append(evalList)
+
+    genSorted = sorted(genCsvL, key = lambda x: x[0])
+
+    for aL, gS in zip(anotherL, genSorted):
+        assert aL == gS
+        
+def test_sample6():
+    fname = 'dir4Tests/sampleTests/sample6.csv'
+    fmtFile = 'sampleFormats/sample6.fmt'
+    inPath = 'dir4Tests/cifs4Tests'
+    fmtStrList=fmt.getStrFmtList(fmtFile)
+    with open(fname, 'r') as file:
+        lines = file.readlines()
+
+    # Doing all this hassle to avoid race contitions
+    anotherL = sorted([line.split(',') for line in lines],
+                      key = lambda x: x[0])
+    # Yeah very unoptimized but the list is not that long
+    for i, line in enumerate(anotherL):
+         anotherL[i] = [a.strip() for a in line]
+    genCsvL = []
+    for cRoute in fnd.yieldCifRoute(inPath):
+        block = fmt.getBlock(cRoute)
+        evalList=[str(misc.myEval(e, block)) for e in fmtStrList]
+        genCsvL.append(evalList)
+
+    genSorted = sorted(genCsvL, key = lambda x: x[0])
+
+    for aL, gS in zip(anotherL, genSorted):
+        assert aL == gS
+        
+        
+def test_sample7():
+    fname = 'dir4Tests/sampleTests/sample7.csv'
+    fmtFile = 'sampleFormats/sample7.fmt'
+    inPath = 'dir4Tests/cifs4Tests'
+    fmtStrList=fmt.getStrFmtList(fmtFile)
+    with open(fname, 'r') as file:
+        lines = file.readlines()
+
+    # Doing all this hassle to avoid race contitions
+    anotherL = sorted([line.split(',') for line in lines],
+                      key = lambda x: x[0])
+    # Yeah very unoptimized but the list is not that long
+    for i, line in enumerate(anotherL):
+         anotherL[i] = [a.strip() for a in line]
+    genCsvL = []
+    for cRoute in fnd.yieldCifRoute(inPath):
+        block = fmt.getBlock(cRoute)
+        evalList=[str(misc.myEval(e, block)) for e in fmtStrList]
+        genCsvL.append(evalList)
+
+    genSorted = sorted(genCsvL, key = lambda x: x[0])
+
+    for aL, gS in zip(anotherL, genSorted):
+        assert aL == gS
+        
+def test_sample8():
+    fname = 'dir4Tests/sampleTests/sample8.csv'
+    fmtFile = 'sampleFormats/sample8.fmt'
+    inPath = 'dir4Tests/cifs4Tests'
+    fmtStrList=fmt.getStrFmtList(fmtFile)
+    with open(fname, 'r') as file:
+        lines = file.readlines()
+
+    # Doing all this hassle to avoid race contitions
+    anotherL = sorted([line.split(',') for line in lines],
+                      key = lambda x: x[0])
+    # Yeah very unoptimized but the list is not that long
+    for i, line in enumerate(anotherL):
+         anotherL[i] = [a.strip() for a in line]
+    genCsvL = []
+    for cRoute in fnd.yieldCifRoute(inPath):
+        block = fmt.getBlock(cRoute)
+        evalList=[str(misc.myEval(e, block)) for e in fmtStrList]
+        genCsvL.append(evalList)
+
+    genSorted = sorted(genCsvL, key = lambda x: x[0])
+
+    for aL, gS in zip(anotherL, genSorted):
+        assert aL == gS
+        
+        
+def test_sample9():
+    fname = 'dir4Tests/sampleTests/sample9.csv'
+    fmtFile = 'sampleFormats/sample9.fmt'
+    inPath = 'dir4Tests/cifs4Tests'
+    fmtStrList=fmt.getStrFmtList(fmtFile)
+    with open(fname, 'r') as file:
+        lines = file.readlines()
+
+    # Doing all this hassle to avoid race contitions
+    anotherL = sorted([line.split(',') for line in lines],
+                      key = lambda x: x[0])
+    # Yeah very unoptimized but the list is not that long
+    for i, line in enumerate(anotherL):
+         anotherL[i] = [a.strip() for a in line]
+    genCsvL = []
+    for cRoute in fnd.yieldCifRoute(inPath):
+        block = fmt.getBlock(cRoute)
+        evalList=[str(misc.myEval(e, block)) for e in fmtStrList]
+        genCsvL.append(evalList)
+
+    genSorted = sorted(genCsvL, key = lambda x: x[0])
+
+    for aL, gS in zip(anotherL, genSorted):
+        assert aL == gS
+        
+def test_sample10():
+    fname = 'dir4Tests/sampleTests/sample10.csv'
+    fmtFile = 'sampleFormats/sample10.fmt'
+    inPath = 'dir4Tests/cifs4Tests'
+    fmtStrList=fmt.getStrFmtList(fmtFile)
+    with open(fname, 'r') as file:
+        lines = file.readlines()
+
+    # Doing all this hassle to avoid race contitions
+    anotherL = sorted([line.split(',') for line in lines],
+                      key = lambda x: x[0])
+    # Yeah very unoptimized but the list is not that long
+    for i, line in enumerate(anotherL):
+         anotherL[i] = [a.strip() for a in line]
+    genCsvL = []
+    for cRoute in fnd.yieldCifRoute(inPath):
+        block = fmt.getBlock(cRoute)
+        evalList=[str(misc.myEval(e, block)) for e in fmtStrList]
+        genCsvL.append(evalList)
+
+    genSorted = sorted(genCsvL, key = lambda x: x[0])
+
+    for aL, gS in zip(anotherL, genSorted):
+        assert aL == gS
