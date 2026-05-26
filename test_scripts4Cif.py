@@ -225,7 +225,7 @@ def test_sample8():
         lines = file.readlines()
 
     # Doing all this hassle to avoid race contitions
-    anotherL = sorted([line.split(',') for line in lines],
+    anotherL = sorted([line.split(',', 1) for line in lines],
                       key = lambda x: x[0])
     # Yeah very unoptimized but the list is not that long
     for i, line in enumerate(anotherL):
