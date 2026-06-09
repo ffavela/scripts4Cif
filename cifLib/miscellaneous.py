@@ -15,7 +15,7 @@ def isFloat(myStr):
         return False
     return True
 
-def myEval(myStr, block):
+def myEval(myStr, block, pymat_struct):
     try:
         return eval(myStr)
     except:

@@ -13,6 +13,9 @@ import cifMod.processing as proc
 from gemmi import cif  # type: ignore
 import os
 
+from pymatgen.core.structure import Structure
+# file_struct = Structure.from_file(cif_path)
+
 def main(argv):
     myOptDict = cliP.getMyOptDict1(argv)
     pSignal = cliP.getParsedSignals(argv, myOptDict)
@@ -51,7 +54,8 @@ def main(argv):
 
         for cRoute in fnd.yieldCifRoute(inPath):
             block = fmt.getBlock(cRoute)
-            evalList=[str(misc.myEval(e, block)) for e in fmtStrList]
+            pymat_struct = Structure.from_file(cRoute)
+            evalList=[str(misc.myEval(e, block, pymat_struct)) for e in fmtStrList]
             if 'None' in evalList:
                 sys.stderr.write("warning: %s has a None\n" %(cRoute))
                 if '-l' in myOptDict:
