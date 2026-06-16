@@ -54,7 +54,7 @@ def main(argv):
 
         for cRoute in fnd.yieldCifRoute(inPath):
             block = fmt.getBlock(cRoute)
-            pymat_struct = Structure.from_file(cRoute)
+            pymat_struct = fmt.getStructure(cRoute)
             evalList=[str(misc.myEval(e, block, pymat_struct)) for e in fmtStrList]
             if 'None' in evalList:
                 sys.stderr.write("warning: %s has a None\n" %(cRoute))
