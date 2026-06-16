@@ -1,5 +1,6 @@
 from gemmi import cif
 from cifLib.super_split import super_split #Fermin's code
+from pymatgen.core.structure import Structure
 
 def getBlock(cifFName):
     """Gets a single block from a given cif file"""
@@ -8,6 +9,14 @@ def getBlock(cifFName):
         return None
     block = doc.sole_block()
     return block
+
+def getStructure(cifRoute):
+    """Gets a pymatgen structure from a given cif file"""
+    try:
+        pymat_struct = Structure.from_file(cifRoute)
+    except Exception as e:
+        pymat_struct = None
+    return pymat_struct
 
 def getStrFmtList(fmtPath):
     """A really simple parser good enough for the moment"""

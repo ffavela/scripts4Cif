@@ -2,6 +2,8 @@ import cifLib.cifFinder as fnd  # type: ignore
 import cifLib.fmtParsing as fmt
 import cifLib.miscellaneous as misc
 
+from pymatgen.core.structure import Structure
+
 def test_countTest():
     """Testing the cif counting"""
 
@@ -26,7 +28,8 @@ def test_sample0():
     genCsvL = []
     for cRoute in fnd.yieldCifRoute(inPath):
         block = fmt.getBlock(cRoute)
-        evalList=[str(misc.myEval(e, block)) for e in fmtStrList]
+        pymat_struct = fmt.getStructure(cRoute)
+        evalList=[str(misc.myEval(e, block, pymat_struct)) for e in fmtStrList]
         genCsvL.append(evalList)
 
     genSorted = sorted(genCsvL, key = lambda x: x[0])
@@ -54,7 +57,8 @@ def test_sample1():
     genCsvL = []
     for cRoute in fnd.yieldCifRoute(inPath):
         block = fmt.getBlock(cRoute)
-        evalList=[str(misc.myEval(e, block)) for e in fmtStrList]
+        pymat_struct = fmt.getStructure(cRoute)
+        evalList=[str(misc.myEval(e, block, pymat_struct)) for e in fmtStrList]
         genCsvL.append(evalList)
 
     genSorted = sorted(genCsvL, key = lambda x: x[0])
@@ -80,7 +84,8 @@ def test_sample2():
     genCsvL = []
     for cRoute in fnd.yieldCifRoute(inPath):
         block = fmt.getBlock(cRoute)
-        evalList=[str(misc.myEval(e, block)) for e in fmtStrList]
+        pymat_struct = fmt.getStructure(cRoute)
+        evalList=[str(misc.myEval(e, block, pymat_struct)) for e in fmtStrList]
         genCsvL.append(evalList)
 
     genSorted = sorted(genCsvL, key = lambda x: x[0])
@@ -106,7 +111,8 @@ def test_sample3():
     genCsvL = []
     for cRoute in fnd.yieldCifRoute(inPath):
         block = fmt.getBlock(cRoute)
-        evalList=[str(misc.myEval(e, block)) for e in fmtStrList]
+        pymat_struct = fmt.getStructure(cRoute)
+        evalList=[str(misc.myEval(e, block, pymat_struct)) for e in fmtStrList]
         genCsvL.append(evalList)
 
     genSorted = sorted(genCsvL, key = lambda x: x[0])
@@ -132,7 +138,8 @@ def test_sample4():
     genCsvL = []
     for cRoute in fnd.yieldCifRoute(inPath):
         block = fmt.getBlock(cRoute)
-        evalList=[str(misc.myEval(e, block)) for e in fmtStrList]
+        pymat_struct = fmt.getStructure(cRoute)
+        evalList=[str(misc.myEval(e, block, pymat_struct)) for e in fmtStrList]
         genCsvL.append(evalList)
 
     genSorted = sorted(genCsvL, key = lambda x: x[0])
