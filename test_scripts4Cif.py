@@ -147,3 +147,28 @@ def test_sample4():
     for aL, gS in zip(anotherL, genSorted):
         assert aL == gS
 
+def test_sample_prometeo():
+    fname = 'dir4Tests/sampleTests/sample_prometeo.csv'
+    fmtFile = 'sampleFormats/prometeo.fmt'
+    inPath = 'dir4Tests/cifs4Tests'
+    fmtStrList=fmt.getStrFmtList(fmtFile)
+    with open(fname, 'r') as file:
+        lines = file.readlines()
+
+    # Doing all this hassle to avoid race contitions
+    anotherL = sorted([line.split(',') for line in lines],
+                      key = lambda x: x[0])
+    # Yeah very unoptimized but the list is not that long
+    for i, line in enumerate(anotherL):
+         anotherL[i] = [a.strip() for a in line]
+    genCsvL = []
+    for cRoute in fnd.yieldCifRoute(inPath):
+        block = fmt.getBlock(cRoute)
+        pymat_struct = fmt.getStructure(cRoute)
+        evalList=[str(misc.myEval(e, block, pymat_struct)) for e in fmtStrList]
+        genCsvL.append(evalList)
+
+    genSorted = sorted(genCsvL, key = lambda x: x[0])
+
+    for aL, gS in zip(anotherL, genSorted):
+        assert aL == gS
